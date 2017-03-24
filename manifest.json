@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Add URL to Window Title Lite",
+  "version": "0.1-alpha",
+
+  "description": "Adds the URL to Window Title intended for KeePass/KeePassX Autotype usage",
+
+  "permissions": [
+    "tabs"
+  ],
+
+  "background": {
+    "scripts": ["main.js"]
+  }
+
+}
