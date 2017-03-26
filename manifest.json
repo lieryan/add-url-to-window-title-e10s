@@ -10,7 +10,7 @@
   ],
 
   "background": {
-    "scripts": ["main.js"]
+    "scripts": ["url.js", "main.js"]
   }
 
 }
