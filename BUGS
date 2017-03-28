@@ -1,0 +1,15 @@
+1. FIXED when refreshing, you'd see doubled URLs
+2. FIXED pages that sets titles via document.title (e.g. Google Instant Search)
+3. when the addon is reinstalled, you'd see doubled URLs
+4. the addon should restore titles when uninstalled
+5. non-HTML pages
+6. we modify the prototype of Document to catch title modifications, this is
+   probably bad for JIT optimizers
+
+Solution:
+1. add a getter/setter to document.title
+   1. getter should retrieve displayTitle
+   2. setter should set realTitle and then call titleUpdate()
+   3. titleUpdate() should generate displayTitle based on realTitle and the
+      current page's url
+      

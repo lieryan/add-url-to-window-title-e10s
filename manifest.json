@@ -9,8 +9,11 @@
     "tabs"
   ],
 
-  "background": {
-    "scripts": ["url.js", "main.js"]
-  }
-
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["url.js", "document-title-property.js"],
+      "run_at": "document_end"
+    }
+  ]
 }
