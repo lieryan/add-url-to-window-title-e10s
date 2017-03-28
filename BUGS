@@ -5,6 +5,7 @@
 5. non-HTML pages
 6. we modify the prototype of Document to catch title modifications, this is
    probably bad for JIT optimizers
+7. if addon was just installed, back button to old page doesn't set title
 
 Solution:
 1. add a getter/setter to document.title
