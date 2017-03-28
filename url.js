@@ -17,20 +17,18 @@ class URL {
     this.username = link.username;  // myuser
     this.password = link.password;  // mypass
   }
-}
 
-
-function getHostname(url) {
-  let link = new URL(url);
-  let optPort = link.port == "" ? "" : ":" + link.port;
-  return link.protocol + '//' + link.hostname + optPort + '/';
+  getHostname() {
+    let optPort = this.port == "" ? "" : ":" + this.port;
+    return this.protocol + '//' + this.hostname + optPort + '/';
+  }
 }
 
 
 let config = {
   separator: " - ",
   getTitle: function(title, url) {
-    return title + this.separator + getHostname(url);
+    return title + this.separator + new URL(url).getHostname();
   }
 };
 
