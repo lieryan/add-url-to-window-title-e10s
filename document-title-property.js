@@ -1,11 +1,4 @@
 class TitleManager {
-  constructor() {
-    // title property descriptor before we override it
-    let originalTitleDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, "title");
-    this.getTitle = originalTitleDescriptor.get.bind(document);
-    this.setTitle = originalTitleDescriptor.set.bind(document);
-  }
-
   attachListeners() {
     let self = this;
     let unsafeDocument = document.wrappedJSObject;
@@ -32,7 +25,7 @@ class TitleManager {
   updateTitle() {
     let urledTitle = config.getTitle(this.realTitle, document.URL);
     console.log('updating title', urledTitle);
-    this.setTitle(urledTitle);
+    document.title = urledTitle;
   }
 
   get realTitle() {
