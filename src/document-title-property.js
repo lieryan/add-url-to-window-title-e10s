@@ -9,7 +9,6 @@ class TitleManager {
     }, unsafeDocumentPrototype);
 
     let setter = exportFunction(function(newVal) { 
-      console.log('watched'); 
       if (!(newVal instanceof String || typeof newVal === "string")) {
         // TODO: safely newVal.toString() in the page's security context
         console.error('add-url-to-window-title:', 'page script trying to set non-string to document.title is unsupported');
@@ -19,12 +18,10 @@ class TitleManager {
     }, unsafeDocumentPrototype);
 
     Object.defineProperty(unsafeDocumentPrototype, 'title', { 'configurable': true, 'get': getter, 'set': setter});
-    console.log('attached');
   }
 
   updateTitle() {
     let urledTitle = config.getTitle(this.realTitle, document.URL);
-    console.log('updating title', urledTitle);
     document.title = urledTitle;
   }
 
@@ -33,7 +30,6 @@ class TitleManager {
   }
 
   set realTitle(newVal) {
-    console.log('write');
     this._realTitle = newVal;
     this.updateTitle();
   }
@@ -41,4 +37,3 @@ class TitleManager {
 let tm = new TitleManager();
 tm.attachListeners();
 tm.realTitle = document.title;
-console.log('injected: document-title-property.js');

@@ -31,5 +31,3 @@ let config = {
     return title + this.separator + new URL(url).getHostname();
   }
 };
-
-console.log("injected: url.js");
